@@ -1,0 +1,11 @@
+[project]
+name = "src"
+version = "0.0.1"
+description = "An MLOps project for Energy Consumption Prediction using Time Series Dataset"
+authors = [{name = "Pratham Desai", email = "prathamdesai071204@gmail.com"}]
+
+[tool.setuptools]
+packages = {find = {}}
+
+[tool.setuptools.dynamic]
+dependencies = {file = "requirements.txt"}

@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+cred.txt
+notebook/
 # C extensions
 *.so
 
