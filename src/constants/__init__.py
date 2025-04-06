@@ -68,7 +68,7 @@ MIN_SAMPLES_MIN_CHILD_WEIGHT = [1,2]
 MODEL Evaluation related constants
 """
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
-MODEL_BUCKET_NAME = "my-model-mlopsproj"
+MODEL_BUCKET_NAME = "energy-consumption-proj"
 MODEL_PUSHER_S3_KEY = "model-registry"
 
 

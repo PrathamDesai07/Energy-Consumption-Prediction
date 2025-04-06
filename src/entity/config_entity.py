@@ -52,3 +52,14 @@ class ModelTrainerConfig:
     _booster = MIN_SAMPLES_BOOSTER
     _objective = MIN_SAMPLES_OBJECTIVE
     _min_child_weight = MIN_SAMPLES_MIN_CHILD_WEIGHT
+
+@dataclass
+class ModelEvaluationConfig:
+    changed_threshold_score: float = MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = MODEL_FILE_NAME
+
+@dataclass
+class ModelPusherConfig:
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = MODEL_FILE_NAME
