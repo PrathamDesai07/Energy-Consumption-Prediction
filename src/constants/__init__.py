@@ -11,7 +11,7 @@ ARTIFACT_DIR: str = "artifact"
 
 MODEL_FILE_NAME = "model.pkl"
 
-TARGET_COLUMN = "Response"
+TARGET_COLUMN = ["PowerConsumption_Zone1", "PowerConsumption_Zone2", "PowerConsumption_Zone3"]
 CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.pkl"
 
