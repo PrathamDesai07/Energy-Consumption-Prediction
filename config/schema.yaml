@@ -1,0 +1,40 @@
+columns:
+  - id: int
+  - Datetime: datetime
+  - Temperature: float
+  - Humidity: float
+  - WindSpeed: float
+  - GeneralDiffuseFlows: float
+  - DiffuseFlows: float
+  - PowerConsumption_Zone1: float
+  - PowerConsumption_Zone2: float
+  - PowerConsumption_Zone3: float
+
+numerical_columns:
+  - Temperature
+  - Humidity
+  - WindSpeed
+  - GeneralDiffuseFlows
+  - DiffuseFlows
+  - PowerConsumption_Zone1
+  - PowerConsumption_Zone2
+  - PowerConsumption_Zone3
+
+categorical_columns: []
+
+datetime_column: Datetime
+
+drop_columns: _id
+
+# for data transformation (scaling, normalization, etc.)
+num_features:
+  - Temperature
+  - Humidity
+  - WindSpeed
+  - GeneralDiffuseFlows
+  - DiffuseFlows
+
+mm_columns:
+  - PowerConsumption_Zone1
+  - PowerConsumption_Zone2
+  - PowerConsumption_Zone3
