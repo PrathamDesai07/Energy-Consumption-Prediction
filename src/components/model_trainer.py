@@ -42,17 +42,17 @@ class ModelTrainer:
 
             # Initialize RandomForestClassifier with specified parameters
             param_grid = {
-            'objective':['reg:squarederror'],
-            'max_depth': [2],
+            'objective': ['reg:squarederror'],
+            'max_depth': [2, 5, 7],
             'learning_rate': [0.1],
-            'subsample': [0.5],
-            'n_estimators': [1000],
-            'min_child_weight': [1],
-            'booster':['gbtree']
+            'subsample': [0.5, 0.7],
+            'n_estimators': [1000, 1500],
+            'min_child_weight': [1, 2],
+            'booster': ['gbtree']
             }
 
             # Create the XGBoost model object
-            xgb_model = xgb.XGBRegressor()
+            xgb_model = xgb.XGBRegressor(tree_method='gpu_hist', verbosity=2)
 
 
             # Create the GridSearchCV 
