@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Energy Data Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Energy Data Input Form</h1>
+        <form action="/" method="post">
+            <label for="Datetime">Datetime (MM/DD/YYYY H:MM):</label>
+        <input type="text" name="Datetime" placeholder="1/1/2017 0:00" required>
+
+
+            <label for="Temperature">Temperature (°C):</label>
+            <input type="number" step="0.0001" name="Temperature" required>
+
+            <label for="Humidity">Humidity (%):</label>
+            <input type="number" step="0.0001" name="Humidity" required>
+
+            <label for="WindSpeed">Wind Speed (m/s):</label>
+            <input type="number" step="0.0001" name="WindSpeed" required>
+
+            <label for="GeneralDiffuseFlows">General Diffuse Flows:</label>
+            <input type="number" step="0.0001" name="GeneralDiffuseFlows" required>
+
+            <label for="DiffuseFlows">Diffuse Flows:</label>
+            <input type="number" step="0.0001" name="DiffuseFlows" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if context %}
+        <div class="result">
+            <p><strong>Result:</strong> {{ context }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
