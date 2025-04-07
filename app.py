@@ -138,13 +138,20 @@ async def predictRouteClient(request: Request):
         normalized_prediction = np.array([value])
 
         pred_values = scaler.inverse_transform(normalized_prediction)
-
-        status = f'Predicted consumption {pred_values}'
+        zone1, zone2, zone3 = pred_values[0]
+        print(zone1, zone2, zone3)
+        formatted_html = f"""
+        Zone 1: {zone1:,.2f} kWh
+        Zone 2: {zone2:,.2f} kWh
+        Zone 3: {zone3:,.2f} kWh
+        """
+        print(formatted_html)
+        status = f'Predicted consumption {type(pred_values)}'
 
         # Render the same HTML page with the prediction result
         return templates.TemplateResponse(
             "energydata.html",
-            {"request": request, "context": status},
+            {"request": request, "context": formatted_html},
         )
         
     except Exception as e:
