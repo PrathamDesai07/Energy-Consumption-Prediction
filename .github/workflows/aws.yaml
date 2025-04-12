@@ -37,6 +37,7 @@ jobs:
   Continuous-Deployment:
     needs: Continuous-Integration
     runs-on: self-hosted
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -52,6 +53,22 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Run Docker Image to serve users
+      - name: Stop and Remove Existing Container (if running)
         run: |
-         docker run -d -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" -e MONGODB_URL="${{ secrets.MONGODB_URL }}" -p 5000:5000 "${{ steps.login-ecr.outputs.registry }}"/"${{ secrets.ECR_REPO }}":latest
+          docker stop my-app || true
+          docker rm my-app || true
+
+      - name: Pull Latest Docker Image
+        run: |
+          docker pull "${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPO }}:latest"
+
+      - name: Run Docker Container with New Image
+        run: |
+          docker run -d \
+            --name my-app \
+            -e AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}" \
+            -e AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}" \
+            -e AWS_DEFAULT_REGION="${{ secrets.AWS_DEFAULT_REGION }}" \
+            -e MONGODB_URL="${{ secrets.MONGODB_URL }}" \
+            -p 5000:5000 \
+            "${{ steps.login-ecr.outputs.registry }}/${{ secrets.ECR_REPO }}:latest"
