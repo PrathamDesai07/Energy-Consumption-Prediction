@@ -112,6 +112,7 @@ class ModelTrainer:
             
             # Load preprocessing object
             preprocessing_obj = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
+            logging.info(self.data_transformation_artifact.transformed_object_file_path)
             logging.info("Preprocessing obj loaded.")
 
             # Check if the model's accuracy meets the expected threshold

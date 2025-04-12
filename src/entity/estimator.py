@@ -2,6 +2,8 @@ import sys
 
 import pandas as pd
 from pandas import DataFrame
+import joblib
+import numpy as np
 from sklearn.pipeline import Pipeline
 
 from src.exception import MyException
@@ -34,8 +36,18 @@ class MyModel:
         try:
             logging.info("Starting prediction process.")
 
-            # Step 1: Apply scaling transformations using the pre-trained preprocessing object
-            transformed_feature = self.preprocessing_object.transform(dataframe)
+            pipeline = joblib.load("/teamspace/studios/this_studio/Energy-Consumption-Prediction/preprocessing.pkl")
+
+            # Access the ColumnTransformer
+            column_transformer = pipeline.named_steps['Preprocessor']
+
+            # Access the MinMaxScaler inside it
+            scaler = column_transformer.named_transformers_['StandardScaler']
+            # print(scaler.feature_names_in_)
+            transformed_feature = scaler.transform(dataframe)
+            # print(dataframe.columns)
+            # transformed_feature = self.preprocessing_object.transform(dataframe)
+            # print(transformed_feature)
 
             # Step 2: Perform prediction using the trained model
             logging.info("Using the trained model to get predictions")

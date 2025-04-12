@@ -33,6 +33,27 @@ num_features:
   - WindSpeed
   - GeneralDiffuseFlows
   - DiffuseFlows
+  - hour
+  - minute
+  - dayofweek
+  - quarter
+  - month
+  - day
+  - year
+  - season
+  - dayofyear
+  - dayofmonth
+  - weekofyear
+  - is_weekend
+  - is_month_start
+  - is_month_end
+  - is_quarter_start
+  - is_quarter_end
+  - is_working_day
+  - is_business_hours
+  - is_peak_hour
+  - minute_of_day
+  - minute_of_week
 
 mm_columns:
   - PowerConsumption_Zone1

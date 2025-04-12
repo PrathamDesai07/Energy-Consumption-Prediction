@@ -127,7 +127,7 @@ async def predictRouteClient(request: Request):
         # Make a prediction and retrieve the result
         value = model_predictor.predict(dataframe=energy_df)[0]
         
-        pipeline = joblib.load("/teamspace/studios/this_studio/Energy-Consumption-Prediction/preprocessing.pkl")
+        pipeline = joblib.load("/teamspace/studios/this_studio/Energy-Consumption-Prediction/preprocessing_target.pkl")
 
         # Access the ColumnTransformer
         column_transformer = pipeline.named_steps['Preprocessor']

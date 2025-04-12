@@ -202,6 +202,7 @@ class DataTransformation:
 
             print("Columns in the DataFrame before transformation:")
             print(input_feature_train_df.columns.tolist())
+            print(target_feature_train_df.columns.tolist())
             # print("Columns expected by preprocessor:")
             # print("num_features:", num_features)
             # print("mm_columns:", mm_columns)
@@ -228,7 +229,7 @@ class DataTransformation:
             test_arr = np.c_[input_feature_test_arr, target_feature_test_arr]
             logging.info("feature-target concatenation done for train-test df.")
 
-            save_object(self.data_transformation_config.transformed_object_file_path, preprocessor_target)
+            save_object(self.data_transformation_config.transformed_object_file_path, preprocessor)
             save_numpy_array_data(self.data_transformation_config.transformed_train_file_path, array=train_arr)
             save_numpy_array_data(self.data_transformation_config.transformed_test_file_path, array=test_arr)
             logging.info("Saving transformation object and transformed files.")
