@@ -36,7 +36,7 @@ class MyModel:
         try:
             logging.info("Starting prediction process.")
 
-            pipeline = joblib.load("Energy-Consumption-Prediction/preprocessing_target.pkl")
+            pipeline = joblib.load("./preprocessing_target.pkl")
 
             # Access the ColumnTransformer
             column_transformer = pipeline.named_steps['Preprocessor']
